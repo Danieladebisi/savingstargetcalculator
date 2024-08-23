@@ -1,34 +1,32 @@
-function calculate() {
-    // Get values from the form
-    const income = parseFloat(document.getElementById('income').value);
-    const expenses = parseFloat(document.getElementById('expenses').value);
-    const loanAmount = parseFloat(document.getElementById('loanAmount').value);
-    const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
-    const loanDuration = parseFloat(document.getElementById('loanDuration').value) * 12; // Convert years to months
-
-    // Calculate monthly savings
-    const monthlySavings = income - expenses;
-
-    // Loan repayment calculations
-    const monthlyInterestRate = interestRate / 12;
-    const monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -loanDuration));
-
-    // Calculate total loan repayment
-    const totalRepayment = monthlyPayment * loanDuration;
-
-    // Calculate the savings plan
-    let resultText = `<h3>Savings Plan Result</h3>
-                      <p>Monthly Savings: $${monthlySavings.toFixed(2)}</p>
-                      <p>Monthly Loan Payment: $${monthlyPayment.toFixed(2)}</p>
-                      <p>Total Loan Repayment: $${totalRepayment.toFixed(2)}</p>`;
-
-    // Determine if savings are sufficient
-    if (monthlySavings > monthlyPayment) {
-        resultText += `<p>Your savings are sufficient to cover your loan payments. Great job!</p>`;
+document.getElementById('has-loan').addEventListener('change', function () {
+    const loanSection = document.querySelector('.loan-section');
+    if (this.value === 'yes') {
+        loanSection.style.display = 'block';
     } else {
-        resultText += `<p>Your savings are not sufficient to cover your loan payments. Consider reducing expenses or finding additional income sources.</p>`;
+        loanSection.style.display = 'none';
     }
+});
 
-    // Display the result
-    document.getElementById('result').innerHTML = resultText;
-}
+document.getElementById('calculate').addEventListener('click', function () {
+    const income = parseFloat(document.getElementById('income').value);
+    const housingExpense = parseFloat(document.getElementById('housing-expense').value);
+    const utilitiesExpense = parseFloat(document.getElementById('utilities-expense').value);
+    const debtPayments = parseFloat(document.getElementById('debt-payments').value);
+    const otherExpenses = parseFloat(document.getElementById('other-expenses').value);
+    const savings = parseFloat(document.getElementById('savings').value);
+    const existingLoans = parseFloat(document.getElementById('existing-loans').value);
+    
+    const goal = document.getElementById('goal').value;
+    const desiredPrice = parseFloat(document.getElementById('desired-price').value);
+    const totalExpenses = housingExpense + utilitiesExpense + debtPayments + otherExpenses;
+
+    let monthlySavings = income - totalExpenses;
+
+    let loanPayment = 0;
+    let totalLoanRepayment = 0;
+    if (document.getElementById('has-loan').value === 'yes') {
+        const loanAmount = parseFloat(document.getElementById('loan-amount').value);
+        const interestRate = parseFloat(document.getElementById('interest-rate').value) / 100;
+        const loanTerm = parseFloat(document.getElementById('loan-term').value) * 12; // in months
+
+        loanPayment = (loanAmount * interestRate / 12) /

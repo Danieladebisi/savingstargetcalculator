@@ -3,80 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SavingsTarget Calculator</title>
+    <title>SavingsTarget - Affordability Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
-        <div class="navbar">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="calculator.html">Calculator</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
-
-    <!-- Header -->
-    <header class="header">
-        <h1>SavingsTarget Calculator</h1>
-        <p>Plan your savings and loan repayments with ease</p>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="ST.jpg" alt="SavingsTarget Logo">
+                <h1>SavingsTarget</h1>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Calculator</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Calculator Section -->
-    <section class="container calculator">
-        <h2>Goal and Loan Calculator</h2>
-        <!-- Goal Selection -->
-        <div class="form-group">
-            <label for="goal">Choose your goal:</label>
-            <select id="goal" class="form-control">
-                <option value="car">Car</option>
-                <option value="house">House</option>
-                <option value="phone">Phone</option>
-                <option value="other">Other Expensive Item</option>
-            </select>
-        </div>
+    <main>
+        <section class="calculator">
+            <h2>Affordability Calculator</h2>
+            
+            <!-- Income and Expenses -->
+            <div class="input-group">
+                <label for="income">Monthly Income ($):</label>
+                <input type="number" id="income" min="0" step="100">
+            </div>
 
-        <!-- Income Input -->
-        <div class="form-group">
-            <label for="income">Monthly Income ($):</label>
-            <input type="number" id="income" class="form-control" placeholder="Enter your monthly income">
-        </div>
+            <div class="input-group">
+                <label for="housing-expense">Monthly Housing Expense ($):</label>
+                <input type="number" id="housing-expense" min="0" step="50">
+            </div>
 
-        <!-- Expenses Input -->
-        <div class="form-group">
-            <label for="expenses">Monthly Expenses ($):</label>
-            <input type="number" id="expenses" class="form-control" placeholder="Enter your monthly expenses">
-        </div>
+            <div class="input-group">
+                <label for="utilities-expense">Monthly Utilities Expense ($):</label>
+                <input type="number" id="utilities-expense" min="0" step="50">
+            </div>
 
-        <!-- Loan Amount -->
-        <div class="form-group">
-            <label for="loanAmount">Loan Amount ($):</label>
-            <input type="number" id="loanAmount" class="form-control" placeholder="Enter the loan amount">
-        </div>
+            <div class="input-group">
+                <label for="debt-payments">Monthly Debt Payments ($):</label>
+                <input type="number" id="debt-payments" min="0" step="50">
+            </div>
 
-        <!-- Interest Rate -->
-        <div class="form-group">
-            <label for="interestRate">Interest Rate (% per annum):</label>
-            <input type="number" id="interestRate" class="form-control" placeholder="Enter the interest rate">
-        </div>
+            <div class="input-group">
+                <label for="other-expenses">Other Monthly Expenses ($):</label>
+                <input type="number" id="other-expenses" min="0" step="50">
+            </div>
 
-        <!-- Loan Duration -->
-        <div class="form-group">
-            <label for="loanDuration">Loan Duration (in years):</label>
-            <input type="number" id="loanDuration" class="form-control" placeholder="Enter loan duration in years">
-        </div>
+            <div class="input-group">
+                <label for="savings">Current Savings ($):</label>
+                <input type="number" id="savings" min="0" step="100">
+            </div>
 
-        <!-- Calculate Button -->
-        <button onclick="calculate()" class="btn">Calculate Savings Plan</button>
+            <div class="input-group">
+                <label for="existing-loans">Existing Loans ($):</label>
+                <input type="number" id="existing-loans" min="0" step="100">
+            </div>
 
-        <!-- Result Display -->
-        <div class="result" id="result"></div>
-    </section>
+            <!-- Dropdown for goals -->
+            <div class="input-group">
+                <label for="goal">Select Goal:</label>
+                <select id="goal">
+                    <option value="car">Car</option>
+                    <option value="house">House</option>
+                    <option value="phone">Phone</option>
+                    <option value="other">Other Expensive Items</option>
+                </select>
+            </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 SavingsTarget. All Rights Reserved.</p>
+            <!-- Price of the desired item -->
+            <div class="input-group">
+                <label for="desired-price">Desired Price ($):</label>
+                <input type="number" id="desired-price" min="0" step="500">
+            </div>
+
+            <!-- Loan related inputs -->
+            <div class="input-group">
+                <label for="has-loan">Do you need a loan?</label>
+                <select id="has-loan">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+
+            <div class="loan-section" style="display:none;">
+                <div class="input-group">
+                    <label for="loan-amount">Loan Amount ($):</label>
+                    <input type="number" id="loan-amount" min="0" step="500">
+                </div>
+
+                <div class="input-group">
+                    <label for="interest-rate">Interest Rate (%):</label>
+                    <input type="number" id="interest-rate" min="0" step="0.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="loan-term">Loan Term (Years):</label>
+                    <input type="number" id="loan-term" min="1" step="1">
+                </div>
+            </div>
+
+            <!-- Calculate Button -->
+            <button id="calculate">Calculate</button>
+
+            <!-- Results -->
+            <div class="results">
+                <h3>Savings Plan Result</h3>
+                <p id="result-savings"></p>
+                <p id="result-loan"></p>
+                <p id="result-total"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SavingsTarget. Calculate. Afford. Achieve.</p>
     </footer>
 
     <script src="script.js"></script>
