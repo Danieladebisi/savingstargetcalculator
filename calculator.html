@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Affordability Calculator - SavingsTarget</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>Enhanced Affordability Calculator</h1>
+            <p>Plan and Track Your Savings Goals</p>
+        </div>
+    </header>
+
+    <!-- Calculator Section -->
+    <section class="calculator">
+        <div class="container">
+            <form id="savingsForm">
+                <!-- Goal 1 -->
+                <div class="goal-group">
+                    <h2>Goal 1: Car</h2>
+                    <div class="form-group">
+                        <label for="goalAmount1">Target Amount:</label>
+                        <input type="number" id="goalAmount1" placeholder="Enter your target amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentSavings1">Current Savings:</label>
+                        <input type="number" id="currentSavings1" placeholder="Enter your current savings" required>
+                    </div>
+                </div>
+
+                <!-- Goal 2 -->
+                <div class="goal-group">
+                    <h2>Goal 2: House</h2>
+                    <div class="form-group">
+                        <label for="goalAmount2">Target Amount:</label>
+                        <input type="number" id="goalAmount2" placeholder="Enter your target amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentSavings2">Current Savings:</label>
+                        <input type="number" id="currentSavings2" placeholder="Enter your current savings" required>
+                    </div>
+                </div>
+
+                <!-- Income and Expenses -->
+                <h2>Income and Expenses</h2>
+                <div class="form-group">
+                    <label for="monthlyIncome">Monthly Income:</label>
+                    <input type="number" id="monthlyIncome" placeholder="Enter your monthly income" required>
+                </div>
+                <div class="form-group">
+                    <label for="monthlyExpenses">Monthly Expenses:</label>
+                    <input type="number" id="monthlyExpenses" placeholder="Enter your monthly expenses" required>
+                </div>
+
+                <!-- Interest Rate -->
+                <div class="form-group">
+                    <label for="interestRate">Expected Annual Interest Rate (%):</label>
+                    <input type="number" id="interestRate" placeholder="Enter interest rate (optional)">
+                </div>
+
+                <!-- Timeframe -->
+                <div class="form-group">
+                    <label for="timeframe">Timeframe (Months):</label>
+                    <input type="number" id="timeframe" placeholder="Enter the number of months to reach your goal" required>
+                </div>
+
+                <!-- Button -->
+                <button type="button" onclick="calculateSavings()">Calculate Savings Plan</button>
+            </form>
+
+            <!-- Results Section -->
+            <div class="result" id="result"></div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 SavingsTarget. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Code -->
+    <script src="script.js"></script>
+</body>
+</html>
