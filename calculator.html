@@ -3,89 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Affordability Calculator - SavingsTarget</title>
+    <title>SavingsTarget Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <h1>Enhanced Affordability Calculator</h1>
-            <p>Plan and Track Your Savings Goals</p>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="calculator.html">Calculator</a>
+            <a href="contact.html">Contact</a>
         </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>SavingsTarget Calculator</h1>
+        <p>Plan your savings and loan repayments with ease</p>
     </header>
 
     <!-- Calculator Section -->
-    <section class="calculator">
-        <div class="container">
-            <form id="savingsForm">
-                <!-- Goal 1 -->
-                <div class="goal-group">
-                    <h2>Goal 1: Car</h2>
-                    <div class="form-group">
-                        <label for="goalAmount1">Target Amount:</label>
-                        <input type="number" id="goalAmount1" placeholder="Enter your target amount" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="currentSavings1">Current Savings:</label>
-                        <input type="number" id="currentSavings1" placeholder="Enter your current savings" required>
-                    </div>
-                </div>
-
-                <!-- Goal 2 -->
-                <div class="goal-group">
-                    <h2>Goal 2: House</h2>
-                    <div class="form-group">
-                        <label for="goalAmount2">Target Amount:</label>
-                        <input type="number" id="goalAmount2" placeholder="Enter your target amount" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="currentSavings2">Current Savings:</label>
-                        <input type="number" id="currentSavings2" placeholder="Enter your current savings" required>
-                    </div>
-                </div>
-
-                <!-- Income and Expenses -->
-                <h2>Income and Expenses</h2>
-                <div class="form-group">
-                    <label for="monthlyIncome">Monthly Income:</label>
-                    <input type="number" id="monthlyIncome" placeholder="Enter your monthly income" required>
-                </div>
-                <div class="form-group">
-                    <label for="monthlyExpenses">Monthly Expenses:</label>
-                    <input type="number" id="monthlyExpenses" placeholder="Enter your monthly expenses" required>
-                </div>
-
-                <!-- Interest Rate -->
-                <div class="form-group">
-                    <label for="interestRate">Expected Annual Interest Rate (%):</label>
-                    <input type="number" id="interestRate" placeholder="Enter interest rate (optional)">
-                </div>
-
-                <!-- Timeframe -->
-                <div class="form-group">
-                    <label for="timeframe">Timeframe (Months):</label>
-                    <input type="number" id="timeframe" placeholder="Enter the number of months to reach your goal" required>
-                </div>
-
-                <!-- Button -->
-                <button type="button" onclick="calculateSavings()">Calculate Savings Plan</button>
-            </form>
-
-            <!-- Results Section -->
-            <div class="result" id="result"></div>
+    <section class="container calculator">
+        <h2>Goal and Loan Calculator</h2>
+        <!-- Goal Selection -->
+        <div class="form-group">
+            <label for="goal">Choose your goal:</label>
+            <select id="goal" class="form-control">
+                <option value="car">Car</option>
+                <option value="house">House</option>
+                <option value="phone">Phone</option>
+                <option value="other">Other Expensive Item</option>
+            </select>
         </div>
+
+        <!-- Income Input -->
+        <div class="form-group">
+            <label for="income">Monthly Income ($):</label>
+            <input type="number" id="income" class="form-control" placeholder="Enter your monthly income">
+        </div>
+
+        <!-- Expenses Input -->
+        <div class="form-group">
+            <label for="expenses">Monthly Expenses ($):</label>
+            <input type="number" id="expenses" class="form-control" placeholder="Enter your monthly expenses">
+        </div>
+
+        <!-- Loan Amount -->
+        <div class="form-group">
+            <label for="loanAmount">Loan Amount ($):</label>
+            <input type="number" id="loanAmount" class="form-control" placeholder="Enter the loan amount">
+        </div>
+
+        <!-- Interest Rate -->
+        <div class="form-group">
+            <label for="interestRate">Interest Rate (% per annum):</label>
+            <input type="number" id="interestRate" class="form-control" placeholder="Enter the interest rate">
+        </div>
+
+        <!-- Loan Duration -->
+        <div class="form-group">
+            <label for="loanDuration">Loan Duration (in years):</label>
+            <input type="number" id="loanDuration" class="form-control" placeholder="Enter loan duration in years">
+        </div>
+
+        <!-- Calculate Button -->
+        <button onclick="calculate()" class="btn">Calculate Savings Plan</button>
+
+        <!-- Result Display -->
+        <div class="result" id="result"></div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 SavingsTarget. All Rights Reserved.</p>
-        </div>
+        <p>&copy; 2024 SavingsTarget. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript Code -->
     <script src="script.js"></script>
 </body>
 </html>
