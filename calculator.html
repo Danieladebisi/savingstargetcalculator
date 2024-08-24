@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SavingsTarget - Affordability Calculator</title>
+    <title>SavingsTarget Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,11 +11,10 @@
         <nav>
             <div class="logo">
                 <img src="ST.jpg" alt="SavingsTarget Logo">
-                <h1>SavingsTarget</h1>
             </div>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="#">Calculator</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -23,103 +22,58 @@
     </header>
 
     <main>
-        <section class="calculator">
-            <h2>Affordability Calculator</h2>
-            
-            <!-- Income and Expenses -->
-            <div class="input-group">
-                <label for="income">Monthly Income ($):</label>
-                <input type="number" id="income" min="0" step="100">
-            </div>
-
-            <div class="input-group">
-                <label for="housing-expense">Monthly Housing Expense ($):</label>
-                <input type="number" id="housing-expense" min="0" step="50">
-            </div>
-
-            <div class="input-group">
-                <label for="utilities-expense">Monthly Utilities Expense ($):</label>
-                <input type="number" id="utilities-expense" min="0" step="50">
-            </div>
-
-            <div class="input-group">
-                <label for="debt-payments">Monthly Debt Payments ($):</label>
-                <input type="number" id="debt-payments" min="0" step="50">
-            </div>
-
-            <div class="input-group">
-                <label for="other-expenses">Other Monthly Expenses ($):</label>
-                <input type="number" id="other-expenses" min="0" step="50">
-            </div>
-
-            <div class="input-group">
-                <label for="savings">Current Savings ($):</label>
-                <input type="number" id="savings" min="0" step="100">
-            </div>
-
-            <div class="input-group">
-                <label for="existing-loans">Existing Loans ($):</label>
-                <input type="number" id="existing-loans" min="0" step="100">
-            </div>
-
-            <!-- Dropdown for goals -->
-            <div class="input-group">
-                <label for="goal">Select Goal:</label>
-                <select id="goal">
+        <section class="calculator-section">
+            <h1>SavingsTarget Calculator</h1>
+            <form id="calculator-form">
+                <label for="goal">Select Your Goal:</label>
+                <select id="goal" required>
                     <option value="car">Car</option>
                     <option value="house">House</option>
                     <option value="phone">Phone</option>
                     <option value="other">Other Expensive Items</option>
                 </select>
-            </div>
 
-            <!-- Price of the desired item -->
-            <div class="input-group">
-                <label for="desired-price">Desired Price ($):</label>
-                <input type="number" id="desired-price" min="0" step="500">
-            </div>
+                <label for="goal-price">Desired Price of Goal:</label>
+                <input type="number" id="goal-price" placeholder="Enter the price" required>
 
-            <!-- Loan related inputs -->
-            <div class="input-group">
-                <label for="has-loan">Do you need a loan?</label>
-                <select id="has-loan">
+                <label for="income">Monthly Income:</label>
+                <input type="number" id="income" placeholder="Enter your monthly income" required>
+
+                <label for="expenses">Monthly Expenses:</label>
+                <input type="number" id="expenses" placeholder="Enter your monthly expenses" required>
+
+                <label for="loan">Do you have a loan?</label>
+                <select id="loan" required>
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
                 </select>
-            </div>
 
-            <div class="loan-section" style="display:none;">
-                <div class="input-group">
-                    <label for="loan-amount">Loan Amount ($):</label>
-                    <input type="number" id="loan-amount" min="0" step="500">
-                </div>
+                <div id="loan-details" style="display: none;">
+                    <label for="loan-amount">Loan Amount:</label>
+                    <input type="number" id="loan-amount" placeholder="Enter loan amount">
 
-                <div class="input-group">
                     <label for="interest-rate">Interest Rate (%):</label>
-                    <input type="number" id="interest-rate" min="0" step="0.1">
+                    <input type="number" id="interest-rate" placeholder="Enter interest rate">
+
+                    <label for="loan-term">Loan Term (months):</label>
+                    <input type="number" id="loan-term" placeholder="Enter loan term">
                 </div>
 
-                <div class="input-group">
-                    <label for="loan-term">Loan Term (Years):</label>
-                    <input type="number" id="loan-term" min="1" step="1">
-                </div>
-            </div>
+                <button type="submit">Calculate</button>
+            </form>
 
-            <!-- Calculate Button -->
-            <button id="calculate">Calculate</button>
-
-            <!-- Results -->
-            <div class="results">
-                <h3>Savings Plan Result</h3>
-                <p id="result-savings"></p>
-                <p id="result-loan"></p>
-                <p id="result-total"></p>
+            <div id="result" class="result-section" style="display: none;">
+                <h2>Savings Plan Result</h2>
+                <p id="monthly-savings"></p>
+                <p id="monthly-loan-payment"></p>
+                <p id="total-loan-repayment"></p>
+                <p id="final-message"></p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 SavingsTarget. Calculate. Afford. Achieve.</p>
+        <p>&copy; 2024 SavingsTarget. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
