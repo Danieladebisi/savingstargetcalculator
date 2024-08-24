@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const existingLoanDetails = document.getElementById('existing-loan-details');
     const newLoanSelect = document.getElementById('new-loan');
     const newLoanDetails = document.getElementById('new-loan-details');
-    const results = document.getElementById('results');
+    const loadingElement = document.getElementById('loading');
+    const resultsSection = document.getElementById('results');
+    const recalculateButton = document.getElementById('recalculate');
+    const readBlogButton = document.getElementById('read-blog');
 
     goalSelect.addEventListener('change', function() {
         otherGoalContainer.classList.toggle('hidden', this.value !== 'other');
@@ -23,6 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         calculateSavings();
+    });
+
+    recalculateButton.addEventListener('click', function() {
+        resultsSection.classList.add('hidden');
+        form.reset();
+        window.scrollTo(0, 0); // Scroll to top of the page
+    });
+
+    readBlogButton.addEventListener('click', function() {
+        window.location.href = 'https://example.com/savings-tips'; // Replace with your blog URL
     });
 
     function calculateSavings() {
@@ -88,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             newLoanInfo.textContent = '';
         }
 
-        results.classList.remove('hidden');
+        resultsSection.classList.remove('hidden');
     }
 
     function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {

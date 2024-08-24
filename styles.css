@@ -156,17 +156,29 @@ body {
 /* CALCULATOR CSS */
 /* CALCULATOR CSS */
 /* CALCULATOR CSS */
+
+
+:root {
+    --background-blue: #0077b5;
+    --dark-green: #004c73;
+    --bright-green: #32e875;
+    --white: #ffffff;
+    --text-green: #32e875;
+    --light-blue: #00acee;
+    --light-gray: #f0f0f0;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #0077b5;
-    color: #ffffff;
+    background-color: var(--background-blue);
+    color: var(--white);
 }
 
 nav {
-    background-color: #004c73;
+    background-color: var(--dark-green);
     padding: 1rem;
 }
 
@@ -182,61 +194,74 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #ffffff;
+    color: var(--white);
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--bright-green);
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     max-width: 800px;
-    margin: auto;
-    overflow: hidden;
+    margin: 2rem auto;
     padding: 2rem;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    margin-top: 2rem;
-    color: #004c73;
+    background-color: var(--white);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: var(--dark-green);
 }
 
 h1 {
-    color: #004c73;
+    color: var(--dark-green);
     text-align: center;
+    margin-bottom: 2rem;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
 label {
-    margin-top: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-green);
     font-weight: bold;
-    display: flex;
-    align-items: center;
 }
 
 input[type="number"],
 input[type="text"],
 select {
     width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    border: 1px solid #00acee;
-    border-radius: 4px;
+    padding: 0.75rem;
+    border: 1px solid var(--light-blue);
+    border-radius: 5px;
+    background-color: var(--light-gray);
+    color: var(--dark-green);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--bright-green);
+    box-shadow: 0 0 0 2px rgba(50, 232, 117, 0.2);
 }
 
 .input-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 .dollar-sign {
     position: absolute;
     left: 10px;
-    color: #004c73;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dark-green);
 }
 
 .input-wrapper input {
@@ -244,14 +269,16 @@ select {
 }
 
 button {
-    background-color: #32e875;
-    color: #004c73;
-    padding: 0.7rem;
+    background-color: var(--bright-green);
+    color: var(--dark-green);
+    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 1rem;
     font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 button:hover {
@@ -264,54 +291,19 @@ button:hover {
 
 #results {
     margin-top: 2rem;
-    padding: 1rem;
-    background-color: #00acee;
-    border: 1px solid #004c73;
-    border-radius: 4px;
-    color: #ffffff;
+    padding: 2rem;
+    background-color: var(--light-blue);
+    border-radius: 10px;
+    color: var(--dark-green);
 }
 
-#results h2 {
-    color: #ffffff;
-    margin-bottom: 1rem;
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
 }
 
-#results p {
-    margin-bottom: 0.5rem;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    margin-left: 5px;
-    width: 16px;
-    height: 16px;
-    background-color: #32e875;
-    color: #004c73;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: help;
-}
-
-.tooltip::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #004c73;
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-}
-
-.tooltip:hover::after {
-    opacity: 1;
-    visibility: visible;
+.button-group button {
+    flex: 1;
+    margin: 0 0.5rem;
 }
