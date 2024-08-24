@@ -7,74 +7,86 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="ST.jpg" alt="SavingsTarget Logo">
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>SavingsTarget Calculator</h1>
+        <form id="savings-form">
+            <label for="goal">Select Savings Goal:</label>
+            <select id="goal" required>
+                <option value="">Choose a goal</option>
+                <option value="car">Car</option>
+                <option value="house">House</option>
+                <option value="vacation">Vacation</option>
+                <option value="other">Other</option>
+            </select>
+
+            <div id="other-goal-container" class="hidden">
+                <label for="other-goal">Specify Your Goal:</label>
+                <input type="text" id="other-goal" placeholder="Enter your savings goal">
             </div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="#">Calculator</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="calculator-section">
-            <h1>SavingsTarget Calculator</h1>
-            <form id="calculator-form">
-                <label for="goal">Select Your Goal:</label>
-                <select id="goal" required>
-                    <option value="car">Car</option>
-                    <option value="house">House</option>
-                    <option value="phone">Phone</option>
-                    <option value="other">Other Expensive Items</option>
-                </select>
+            <label for="price">Desired Price of the Goal:</label>
+            <input type="number" id="price" placeholder="Enter amount" required>
 
-                <label for="goal-price">Desired Price of Goal:</label>
-                <input type="number" id="goal-price" placeholder="Enter the price" required>
+            <label for="income">Monthly Income:</label>
+            <input type="number" id="income" placeholder="Enter monthly income" required>
 
-                <label for="income">Monthly Income:</label>
-                <input type="number" id="income" placeholder="Enter your monthly income" required>
+            <label for="expenses">Monthly Expenses:</label>
+            <input type="number" id="expenses" placeholder="Enter monthly expenses" required>
 
-                <label for="expenses">Monthly Expenses:</label>
-                <input type="number" id="expenses" placeholder="Enter your monthly expenses" required>
+            <label for="existing-loan">Do you have an existing loan?</label>
+            <select id="existing-loan" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
 
-                <label for="loan">Do you have a loan?</label>
-                <select id="loan" required>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
+            <div id="existing-loan-details" class="hidden">
+                <label for="existing-loan-amount">Existing Loan Amount:</label>
+                <input type="number" id="existing-loan-amount" placeholder="Enter loan amount">
 
-                <div id="loan-details" style="display: none;">
-                    <label for="loan-amount">Loan Amount:</label>
-                    <input type="number" id="loan-amount" placeholder="Enter loan amount">
+                <label for="existing-loan-monthly-payment">Monthly Loan Payment:</label>
+                <input type="number" id="existing-loan-monthly-payment" placeholder="Enter monthly payment">
 
-                    <label for="interest-rate">Interest Rate (%):</label>
-                    <input type="number" id="interest-rate" placeholder="Enter interest rate">
-
-                    <label for="loan-term">Loan Term (months):</label>
-                    <input type="number" id="loan-term" placeholder="Enter loan term">
-                </div>
-
-                <button type="submit">Calculate</button>
-            </form>
-
-            <div id="result" class="result-section" style="display: none;">
-                <h2>Savings Plan Result</h2>
-                <p id="monthly-savings"></p>
-                <p id="monthly-loan-payment"></p>
-                <p id="total-loan-repayment"></p>
-                <p id="final-message"></p>
+                <label for="existing-loan-interest">Loan Interest Rate (%):</label>
+                <input type="number" id="existing-loan-interest" placeholder="Enter interest rate" step="0.1">
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 SavingsTarget. All Rights Reserved.</p>
-    </footer>
+            <label for="new-loan">Will you take a loan to purchase what you're saving for?</label>
+            <select id="new-loan" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+
+            <div id="new-loan-details" class="hidden">
+                <label for="new-loan-amount">New Loan Amount:</label>
+                <input type="number" id="new-loan-amount" placeholder="Enter loan amount">
+
+                <label for="new-loan-interest">New Loan Interest Rate (%):</label>
+                <input type="number" id="new-loan-interest" placeholder="Enter interest rate" step="0.1">
+
+                <label for="new-loan-term">Loan Term (years):</label>
+                <input type="number" id="new-loan-term" placeholder="Enter loan term in years">
+            </div>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <p id="savings-goal"></p>
+            <p id="monthly-savings"></p>
+            <p id="months-to-save"></p>
+            <p id="existing-loan-info"></p>
+            <p id="new-loan-info"></p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
