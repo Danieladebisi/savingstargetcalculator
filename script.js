@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let existingLoanAmount = 0;
         let existingLoanMonthlyPayment = 0;
         let existingLoanInterest = 0;
+        let existingLoanTerm = 0;
         let newLoanAmount = 0;
         let newLoanInterest = 0;
         let newLoanTerm = 0;
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             existingLoanAmount = parseFloat(document.getElementById('existing-loan-amount').value);
             existingLoanMonthlyPayment = parseFloat(document.getElementById('existing-loan-monthly-payment').value);
             existingLoanInterest = parseFloat(document.getElementById('existing-loan-interest').value);
+            existingLoanTerm = parseFloat(document.getElementById('existing-loan-term').value);
         }
 
         if (hasNewLoan) {
@@ -57,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalSavingsNeeded = price - newLoanAmount;
         const monthsToSave = Math.ceil(totalSavingsNeeded / monthlySavings);
 
-        displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm);
+        displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, existingLoanTerm, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm);
     }
 
-    function displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm) {
+    function displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, existingLoanTerm, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm) {
         const savingsGoal = document.getElementById('savings-goal');
         const monthlySavingsElement = document.getElementById('monthly-savings');
         const monthsToSaveElement = document.getElementById('months-to-save');
@@ -74,14 +76,14 @@ document.addEventListener('DOMContentLoaded', function() {
         monthsToSaveElement.textContent = `for ${monthsToSave} months (${(monthsToSave / 12).toFixed(1)} years)`;
 
         if (hasExistingLoan) {
-            existingLoanInfo.textContent = `Existing Loan: $${existingLoanAmount.toFixed(2)} at ${existingLoanInterest}% interest`;
+            existingLoanInfo.textContent = `Existing Loan: $${existingLoanAmount.toFixed(2)} at ${existingLoanInterest}% interest for ${existingLoanTerm} months`;
         } else {
             existingLoanInfo.textContent = '';
         }
 
         if (hasNewLoan) {
             const monthlyPayment = calculateMonthlyPayment(newLoanAmount, newLoanInterest, newLoanTerm);
-            newLoanInfo.textContent = `New Loan: $${newLoanAmount.toFixed(2)} at ${newLoanInterest}% interest for ${newLoanTerm} years. Monthly payment: $${monthlyPayment.toFixed(2)}`;
+            newLoanInfo.textContent = `New Loan: $${newLoanAmount.toFixed(2)} at ${newLoanInterest}% interest for ${newLoanTerm} months. Monthly payment: $${monthlyPayment.toFixed(2)}`;
         } else {
             newLoanInfo.textContent = '';
         }
@@ -91,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
         const monthlyRate = interestRate / 100 / 12;
-        const numberOfPayments = loanTerm * 12;
+        const numberOfPayments = loanTerm;
         return (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
     }
 });

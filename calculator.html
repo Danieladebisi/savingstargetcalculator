@@ -18,7 +18,9 @@
     <div class="container">
         <h1>SavingsTarget Calculator</h1>
         <form id="savings-form">
-            <label for="goal">Select Savings Goal:</label>
+            <label for="goal">Select Savings Goal:
+                <span class="tooltip" data-tooltip="Choose what you're saving for">?</span>
+            </label>
             <select id="goal" required>
                 <option value="">Choose a goal</option>
                 <option value="car">Car</option>
@@ -28,51 +30,98 @@
             </select>
 
             <div id="other-goal-container" class="hidden">
-                <label for="other-goal">Specify Your Goal:</label>
+                <label for="other-goal">Specify Your Goal:
+                    <span class="tooltip" data-tooltip="Enter your custom savings goal">?</span>
+                </label>
                 <input type="text" id="other-goal" placeholder="Enter your savings goal">
             </div>
 
-            <label for="price">Desired Price of the Goal:</label>
-            <input type="number" id="price" placeholder="Enter amount" required>
+            <label for="price">Desired Price of the Goal:
+                <span class="tooltip" data-tooltip="Enter the total amount you need to save">?</span>
+            </label>
+            <div class="input-wrapper">
+                <span class="dollar-sign">$</span>
+                <input type="number" id="price" placeholder="Enter amount" required>
+            </div>
 
-            <label for="income">Monthly Income:</label>
-            <input type="number" id="income" placeholder="Enter monthly income" required>
+            <label for="income">Monthly Income:
+                <span class="tooltip" data-tooltip="Enter your total monthly income">?</span>
+            </label>
+            <div class="input-wrapper">
+                <span class="dollar-sign">$</span>
+                <input type="number" id="income" placeholder="Enter monthly income" required>
+            </div>
 
-            <label for="expenses">Monthly Expenses:</label>
-            <input type="number" id="expenses" placeholder="Enter monthly expenses" required>
+            <label for="expenses">Monthly Expenses:
+                <span class="tooltip" data-tooltip="Enter your total monthly expenses">?</span>
+            </label>
+            <div class="input-wrapper">
+                <span class="dollar-sign">$</span>
+                <input type="number" id="expenses" placeholder="Enter monthly expenses" required>
+            </div>
 
-            <label for="existing-loan">Do you have an existing loan?</label>
+            <label for="existing-loan">Do you have an existing loan?
+                <span class="tooltip" data-tooltip="Select if you have any current loans">?</span>
+            </label>
             <select id="existing-loan" required>
                 <option value="no">No</option>
                 <option value="yes">Yes</option>
             </select>
 
             <div id="existing-loan-details" class="hidden">
-                <label for="existing-loan-amount">Existing Loan Amount:</label>
-                <input type="number" id="existing-loan-amount" placeholder="Enter loan amount">
+                <label for="existing-loan-amount">Existing Loan Amount:
+                    <span class="tooltip" data-tooltip="Enter the remaining balance of your existing loan">?</span>
+                </label>
+                <div class="input-wrapper">
+                    <span class="dollar-sign">$</span>
+                    <input type="number" id="existing-loan-amount" placeholder="Enter loan amount">
+                </div>
 
-                <label for="existing-loan-monthly-payment">Monthly Loan Payment:</label>
-                <input type="number" id="existing-loan-monthly-payment" placeholder="Enter monthly payment">
+                <label for="existing-loan-monthly-payment">Monthly Loan Payment:
+                    <span class="tooltip" data-tooltip="Enter your current monthly loan payment">?</span>
+                </label>
+                <div class="input-wrapper">
+                    <span class="dollar-sign">$</span>
+                    <input type="number" id="existing-loan-monthly-payment" placeholder="Enter monthly payment">
+                </div>
 
-                <label for="existing-loan-interest">Loan Interest Rate (%):</label>
+                <label for="existing-loan-interest">Loan Interest Rate (%):
+                    <span class="tooltip" data-tooltip="Enter the annual interest rate of your existing loan">?</span>
+                </label>
                 <input type="number" id="existing-loan-interest" placeholder="Enter interest rate" step="0.1">
+
+                <label for="existing-loan-term">Loan Term (months):
+                    <span class="tooltip" data-tooltip="Enter the total duration of your existing loan in months">?</span>
+                </label>
+                <input type="number" id="existing-loan-term" placeholder="Enter loan term in months">
             </div>
 
-            <label for="new-loan">Will you take a loan to purchase what you're saving for?</label>
+            <label for="new-loan">Will you take a loan to purchase what you're saving for?
+                <span class="tooltip" data-tooltip="Select if you plan to take a new loan for your savings goal">?</span>
+            </label>
             <select id="new-loan" required>
                 <option value="no">No</option>
                 <option value="yes">Yes</option>
             </select>
 
             <div id="new-loan-details" class="hidden">
-                <label for="new-loan-amount">New Loan Amount:</label>
-                <input type="number" id="new-loan-amount" placeholder="Enter loan amount">
+                <label for="new-loan-amount">New Loan Amount:
+                    <span class="tooltip" data-tooltip="Enter the amount you plan to borrow">?</span>
+                </label>
+                <div class="input-wrapper">
+                    <span class="dollar-sign">$</span>
+                    <input type="number" id="new-loan-amount" placeholder="Enter loan amount">
+                </div>
 
-                <label for="new-loan-interest">New Loan Interest Rate (%):</label>
+                <label for="new-loan-interest">New Loan Interest Rate (%):
+                    <span class="tooltip" data-tooltip="Enter the expected annual interest rate for the new loan">?</span>
+                </label>
                 <input type="number" id="new-loan-interest" placeholder="Enter interest rate" step="0.1">
 
-                <label for="new-loan-term">Loan Term (years):</label>
-                <input type="number" id="new-loan-term" placeholder="Enter loan term in years">
+                <label for="new-loan-term">Loan Term (months):
+                    <span class="tooltip" data-tooltip="Enter the expected duration of the new loan in months">?</span>
+                </label>
+                <input type="number" id="new-loan-term" placeholder="Enter loan term in months">
             </div>
 
             <button type="submit">Calculate</button>
