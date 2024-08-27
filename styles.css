@@ -493,14 +493,14 @@ body {
 
 .social-media {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    width: 100px;
+    margin-top: 1rem;
 }
 
 .social-media a {
-    text-decoration: none;
     color: #114070;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
@@ -527,9 +527,7 @@ footer p {
         flex-direction: column;
     }
 
-    .contact-info {
+    .contact-form, .contact-info {
         max-width: 100%;
-        margin: 1rem 0;
     }
 }
-
