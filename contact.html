@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - SavingsTarget</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+    <!-- Navbar Section -->
     <header class="navbar">
         <div class="logo">
             <h1>SavingsTarget</h1>
@@ -24,23 +22,29 @@
         </nav>
     </header>
 
+    <!-- Contact Section -->
     <section class="contact-container">
         <h2>Contact Us</h2>
         <p>We'd love to hear from you! Whether you have a question about our services, feedback, or anything else, our team is ready to answer all your questions.</p>
 
         <div class="contact-form-container">
-            <form class="contact-form" action="#" method="post">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Your Message</label>
-                <textarea id="message" name="message" rows="6" required></textarea>
-
-                <button type="submit">Send Message</button>
-            </form>
+            <div class="contact-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
 
             <div class="contact-info">
                 <h3>Get in Touch</h3>
@@ -61,7 +65,26 @@
         <p>&copy; 2024 SavingsTarget. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-</body>
+    <!-- JS for Google Sheets Integration -->
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function(e) {
+            e.preventDefault();
 
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL", {
+                method: "POST",
+                body: JSON.stringify({ name: name, email: email, message: message }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Message sent successfully!");
+                document.getElementById("contact-form").reset();
+            })
+            .catch(error => alert("Failed to send message!"));
+        });
+    </script>
+</body>
 </html>
