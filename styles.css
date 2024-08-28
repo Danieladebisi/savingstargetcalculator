@@ -22,12 +22,51 @@ body {
     text-align: center;
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 3em;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
 }
 
-.header p {
+.navbar .logo img {
+    height: 50px;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    transition: background 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    background: #ff6600;
+    border-radius: 5px;
+}
+
+.header-content {
+    margin-top: 20px;
+}
+
+.header-content h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.header-content p {
     font-size: 1.2em;
 }
 
@@ -150,6 +189,7 @@ body {
     margin: 0;
     font-size: 1em;
 }
+
 
 
 /* CALCULATOR CSS */
