@@ -177,30 +177,54 @@ body {
     color: var(--white);
 }
 
-nav {
-    background-color: var(--dark-green);
-    padding: 1rem;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--dark-green);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-nav ul li {
-    margin-right: 1rem;
+header .logo {
+    font-size: 1.5rem;
+    color: var(--bright-green);
+    font-weight: bold;
+    transition: transform 0.3s ease;
 }
 
-nav ul li a {
-    color: var(--white);
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li {
+    list-style: none;
+}
+
+header nav ul li a {
     text-decoration: none;
+    color: var(--white);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+header nav ul li a:hover {
     color: var(--bright-green);
+}
+
+header.scrolled {
+    background-color: var(--light-blue);
+}
+
+header.scrolled .logo {
+    transform: scale(0.9);
 }
 
 .container {
@@ -249,64 +273,63 @@ input[type="text"]:focus,
 select:focus {
     outline: none;
     border-color: var(--bright-green);
-    box-shadow: 0 0 0 2px rgba(50, 232, 117, 0.2);
+    box-shadow: 0 0 0 2px rgba(50, 232, 117, 0.3);
+}
+
+.dollar-sign {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dark-green);
 }
 
 .input-wrapper {
     position: relative;
 }
 
-.dollar-sign {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--dark-green);
-}
-
-.input-wrapper input {
-    padding-left: 25px;
-}
-
-button {
+button[type="submit"] {
     background-color: var(--bright-green);
     color: var(--dark-green);
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
-    margin-top: 1rem;
 }
 
-button:hover {
-    background-color: #28c662;
+button[type="submit"]:hover {
+    background-color: var(--light-blue);
 }
 
 .hidden {
     display: none;
 }
 
-#results {
-    margin-top: 2rem;
-    padding: 2rem;
-    background-color: var(--light-blue);
-    border-radius: 10px;
-    color: var(--dark-green);
-}
-
-.button-group {
+button-group {
     display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+    justify-content: space-around;
 }
 
-.button-group button {
-    flex: 1;
-    margin: 0 0.5rem;
+#recalculate,
+#read-blog {
+    background-color: var(--light-blue);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
+#recalculate:hover,
+#read-blog:hover {
+    background-color: var(--dark-green);
+}
+
+
 
 
 
