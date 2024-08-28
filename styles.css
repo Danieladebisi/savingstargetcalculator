@@ -18,7 +18,7 @@ body {
 .header {
     background: #114070;
     color: #fff;
-    padding: 40px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -57,19 +57,6 @@ body {
     border-radius: 5px;
 }
 
-.header-content {
-    margin-top: 20px;
-}
-
-.header-content h1 {
-    font-size: 3em;
-    margin: 0;
-}
-
-.header-content p {
-    font-size: 1.2em;
-}
-
 /* Our Story Section */
 .our-story {
     background-color: #fff;
@@ -93,6 +80,8 @@ body {
 .story-content img {
     width: 45%;
     border-radius: 8px;
+    transition: opacity 1.5s ease-in-out;
+    opacity: 0;
 }
 
 .story-text {
@@ -127,6 +116,8 @@ body {
     text-align: center;
     width: 30%;
     margin-bottom: 40px;
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
 }
 
 .team-member img {
@@ -188,6 +179,41 @@ body {
 .footer p {
     margin: 0;
     font-size: 1em;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: slideIn 1.5s forwards;
+}
+
+@keyframes slideIn {
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes zoomIn {
+    100% {
+        transform: scale(1);
+    }
 }
 
 
