@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     readBlogButton.addEventListener('click', function() {
-        window.location.href = 'https://example.com/savings-tips'; // Replace with your blog URL
+        window.location.href = 'https://blog.savingstarget.com'; // Replace with your blog URL
     });
 
     function calculateSavings() {
